@@ -85,7 +85,11 @@ routes.post('/extra', celebrate({
     })
 }), extra_controller.insert)
 
-routes.get('/extra', extra_controller.select)
+routes.get('/extra', celebrate({
+    [Segments.QUERY]: Joi.object().keys({
+        content: Joi.string().required()
+    })
+}), extra_controller.select)
 
 
 
@@ -102,7 +106,11 @@ routes.post('/question', celebrate({
     })
 }), question_controller.insert)
 
-routes.get('/question', question_controller.select)
+routes.get('/question', celebrate({
+    [Segments.QUERY]: Joi.object().keys({
+        content: Joi.string().required()
+    })
+}), question_controller.select)
 
 
 

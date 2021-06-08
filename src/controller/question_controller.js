@@ -18,7 +18,9 @@ module.exports = {
     },
 
     async select(request, response) {
-        const questions = await Question.find()
+        const { content } = request.query
+
+        const questions = await Question.find({content_id: content})
 
         return response.json(questions)
     },

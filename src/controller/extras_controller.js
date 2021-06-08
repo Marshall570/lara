@@ -15,8 +15,10 @@ module.exports = {
     },
 
     async select(request, response) {
-        const extras = await Extra.find()
+        const { content } = request.query
+
+        const extras = await Extra.find({content_id: content})
 
         return response.json(extras)
-    }
+    },
 }
