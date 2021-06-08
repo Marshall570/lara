@@ -11,7 +11,9 @@ module.exports = {
             password
         })
 
-        return response.status(201).send()
+        const user_id = await User.findOne({user: user})
+
+        return response.json(user_id)
     },
 
     async select(request, response) {

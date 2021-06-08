@@ -16,7 +16,7 @@ const storageTypes = {
             crypto.randomBytes(16, (err, hash) => {
                 if (err) cb(err)
 
-                file.key = `${file.originalname}`
+                file.key = `${file.name}`
 
                 cb(null, file.key)
             })
@@ -32,7 +32,7 @@ const storageTypes = {
             crypto.randomBytes(16, (err, hash) => {
                 if (err) cb(err)
 
-                const fileName = `${file.originalname}`
+                const fileName = `${file.name}`
 
                 cb(null, fileName)
             })
