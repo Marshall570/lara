@@ -16,7 +16,7 @@ module.exports = {
     async select_one(request, response) {
         const { component } = request.query
 
-        const contents = await Content.find({ component: component })
+        const contents = await Content.find({ component_id: component })
 
         return response.json(contents)
     },
