@@ -1,7 +1,7 @@
 const express = require('express')
+const multer = require('multer')
+const multerConfig = require('./config/multer')
 const { celebrate, Joi, Segments } = require('celebrate')
-
-const routes = express.Router()
 
 const user_controller = require('./controller/user_controller')
 const component_controller = require('./controller/component_controller')
@@ -10,6 +10,8 @@ const extra_controller = require('./controller/extras_controller')
 const question_controller = require('./controller/question_controller')
 const session_controller = require('./controller/session_controller')
 
+
+const routes = express.Router()
 
 // USER ROUTES
 routes.post('/user', celebrate({
@@ -22,6 +24,22 @@ routes.post('/user', celebrate({
 }), user_controller.insert)
 
 routes.get('/user', user_controller.select)
+
+routes.put('/user', celebrate({
+    [Segments.QUERY]: Joi.object().keys({
+        id: Joi.string().required()
+    }),
+    [Segments.BODY]: Joi.object().keys({
+        name: Joi.string().required(),
+        user: Joi.string().required(),
+        email: Joi.string().required().email(),
+        password: Joi.string().required(),
+    })
+}),  user_controller.update)
+
+routes.put('/pic', multer(multerConfig).single('file'), (req, res) => {
+    return res.json({status: 'ok'})
+})
 
 
 // COMPONENT ROUTES

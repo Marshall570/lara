@@ -19,4 +19,20 @@ module.exports = {
 
         return response.json(users)
     },
+
+    async update(request, response) {
+        const { id } = request.query
+        const { name, user, email, password } = request.body
+
+        await User.updateOne({
+            _id: id
+        }, {
+            name: name,
+            user: user,
+            email: email,
+            password: password
+        })
+
+        return response.status(200).send()
+    }
 }
