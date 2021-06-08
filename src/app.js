@@ -19,6 +19,6 @@ app.use(express.json())
 app.use(errors())
 app.use(routes)
 app.use(morgan('dev'))
-app.listen(process.env.APP_PORT)
+app.listen(process.env.PORT || 3210)
 
 module.exports = app
