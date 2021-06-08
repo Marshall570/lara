@@ -2,14 +2,14 @@ const mongoose = require('mongoose')
 
 const ContentSchema = mongoose.Schema({
     component_id: {
-        type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'components'
     },
     name: {
         type: String
     },
     link: {
         type: String,
-        unique: true
     }
 })
 

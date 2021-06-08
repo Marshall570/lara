@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 
 const QuestionSchema = mongoose.Schema({
     content_id: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'contents'
     },
     question: {
         type: String

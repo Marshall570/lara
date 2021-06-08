@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 
 const ExtraSchema = mongoose.Schema({
     content_id: {
-        type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'contents'
     },
     name: {
         type: String
