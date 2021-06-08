@@ -37,8 +37,8 @@ routes.put('/user', celebrate({
     })
 }),  user_controller.update)
 
-routes.put('/pic', multer(multerConfig).single('file'), (request, response) => {
-    return response.status(200).send()
+routes.post('/pic', multer(multerConfig).single('file'), async(req, res) => {
+    return res.status(200).send()
 })
 
 

@@ -13,13 +13,11 @@ const storageTypes = {
         },
 
         filename: (request, file, cb) => {
-            crypto.randomBytes(16, (err, hash) => {
-                if (err) cb(err)
-
-                file.key = `${file.name}`
-
-                cb(null, file.key)
-            })
+            if (err) cb(err)
+    
+            file.key = `${file.name}`
+    
+            cb(null, file.key)            
         }
     }),
 
@@ -29,13 +27,9 @@ const storageTypes = {
         contentType: multerS3.AUTO_CONTENT_TYPE,
         acl: 'public-read',
         key: (req, file, cb) => {
-            crypto.randomBytes(16, (err, hash) => {
-                if (err) cb(err)
-
-                const fileName = `${file.name}`
-
-                cb(null, fileName)
-            })
+            const fileName = `${file.originalname}`
+    
+            cb(null, fileName)
         }
     })
 }

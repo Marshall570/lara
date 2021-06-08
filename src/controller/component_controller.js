@@ -22,7 +22,7 @@ module.exports = {
         const { axis } = request.query
 
         const components = await Component.find({ axis: axis })
-        console.log(components)
+        
         return response.json(components)
     }
 }
