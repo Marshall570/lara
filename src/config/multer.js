@@ -23,7 +23,7 @@ const storageTypes = {
 
     s3: multerS3({
         s3: new aws.S3(),
-        bucket: 'lara-profile-pics',
+        bucket: process.env.S3_BUCKET,
         contentType: multerS3.AUTO_CONTENT_TYPE,
         acl: 'public-read',
         key: (req, file, cb) => {

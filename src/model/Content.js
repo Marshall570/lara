@@ -7,9 +7,6 @@ const ContentSchema = mongoose.Schema({
     },
     name: {
         type: String
-    },
-    link: {
-        type: String,
     }
 })
 

@@ -6,9 +6,6 @@ const ComponentSchema = mongoose.Schema({
     },
     name: {
         type: String
-    },
-    icon: {
-        type: String
     }
 })
 

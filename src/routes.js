@@ -23,8 +23,6 @@ routes.post('/user', celebrate({
     })
 }), user_controller.insert)
 
-routes.get('/user', user_controller.select)
-
 routes.put('/user', celebrate({
     [Segments.QUERY]: Joi.object().keys({
         id: Joi.string().required()
@@ -62,8 +60,7 @@ routes.get('/component', celebrate({
 routes.post('/content', celebrate({
     [Segments.BODY]: Joi.object().keys({
         component_id: Joi.string().required(),
-        name: Joi.string().required(),
-        link: Joi.string().allow('')
+        name: Joi.string().required()
     })
 }), content_controller.insert)
 

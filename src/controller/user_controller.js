@@ -4,22 +4,28 @@ module.exports = {
     async insert(request, response) {
         const { name, user, email, password } = request.body
 
-        await User.create({
-            name,
-            user,
-            email,
-            password
-        })
+        const check_user = await User.findOne({ user: user })
+        const check_mail = await User.findOne({ email: email })
 
-        const user_id = await User.findOne({user: user})
+        if (check_user !== null) {
+            return response.json({ result: 'user' })
+        } else {
+            if (check_mail !== null) {
+                return response.json({ result: 'mail' })
+            } else {
+                await User.create({
+                    name,
+                    user,
+                    email,
+                    password
+                })
 
-        return response.json(user_id)
-    },
+                const user_id = await User.findOne({ user: user })
 
-    async select(request, response) {
-        const users = await User.find()
+                return response.json(user_id)
+            }
+        }
 
-        return response.json(users)
     },
 
     async update(request, response) {

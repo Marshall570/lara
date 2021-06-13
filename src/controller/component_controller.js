@@ -12,12 +12,6 @@ module.exports = {
         return response.status(201).send()
     },
 
-    async select(request, response) {
-        const components = await Component.find()
-
-        return response.json(components)
-    },
-
     async select_one(request, response) {
         const { axis } = request.query
 
