@@ -13,6 +13,10 @@ const session_controller = require('./controller/session_controller')
 
 const routes = express.Router()
 
+routes.get('/', async (request, response) => {
+    return response.json({ server: 'on' })
+})
+
 // USER ROUTES
 routes.post('/user', celebrate({
     [Segments.BODY]: Joi.object().keys({
@@ -33,9 +37,9 @@ routes.put('/user', celebrate({
         email: Joi.string().required().email(),
         password: Joi.string().required(),
     })
-}),  user_controller.update)
+}), user_controller.update)
 
-routes.post('/pic', multer(multerConfig).single('file'), async(req, res) => {
+routes.post('/pic', multer(multerConfig).single('file'), async (req, res) => {
     return res.status(200).send()
 })
 
